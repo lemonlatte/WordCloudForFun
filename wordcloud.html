@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="/static/wordcloud2.js"></script>
+        <script src="/static/wordfreq.js"></script>
+    </head>
+    <body>
+
+        <canvas id="my_word" width="960px" height="480px"></canvas>
+
+        <script>
+
+            // work 的參數
+            var options = {workerUrl: '/static/wordfreq.worker.js' };
+
+            // initialize
+            var wf = WordFreq(options);
+
+
+            $(function(){
+                $.get("/load_page", function(data){
+                    var my_text = $(data).find("#mw-content-text p").text()
+                    //處理文字
+                    wf.process(my_text).getList(function (list) {
+                        //處理完的callback
+                        console.log(list)
+
+                        //畫圖的
+                        WordCloud(document.getElementById('my_word'), { list: list, weightFactor: 1.5, minSize: 12, shape: "triangle-forward"} );
+                    });
+                });
+
+            });
+        </script>
+    </body>
+</html>

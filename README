@@ -1,0 +1,35 @@
+
+==================
+Word Cloud For Fun
+==================
+
+
+Installation
+============
+
+To get setup with pycon code you must have the follow installed:
+
+ * Python 2.7+
+ * virtualenv
+ * pip
+ * C compiler
+
+Setting up environment
+----------------------
+
+Create a virtual environment where pycon dependencies will live::
+
+    $ virtualenv .venv
+    $ source .venv/bin/activate
+    (.venv)$
+
+Install pycon project dependencies::
+
+    (.venv)$ pip install -r pip.requirement
+
+Running a web server
+--------------------
+
+In development you should run::
+
+    (.venv)$ python server.py
